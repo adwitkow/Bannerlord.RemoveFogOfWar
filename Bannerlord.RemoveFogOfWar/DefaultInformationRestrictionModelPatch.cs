@@ -16,17 +16,35 @@ namespace Bannerlord.RemoveFogOfWar
             var heroMethodToPatch = AccessTools2.Method(typeof(DefaultInformationRestrictionModel),
                 nameof(DefaultInformationRestrictionModel.DoesPlayerKnowDetailsOf),
                 new[] { typeof(Hero) });
-            var prefixMethod = AccessTools2.Method(typeof(DefaultInformationRestrictionModelPatch),
-                nameof(DoesPlayerKnowDetailsOfPrefix));
+            var settlementPrefixMethod = AccessTools2.Method(typeof(DefaultInformationRestrictionModelPatch),
+                nameof(DoesPlayerKnowDetailsOfSettlementPrefix));
+            var heroPrefixMethod = AccessTools2.Method(typeof(DefaultInformationRestrictionModelPatch),
+                nameof(DoesPlayerKnowDetailsOfHeroPrefix));
 
-            harmony.TryPatch(settlementMethodToPatch, prefix: prefixMethod);
-            harmony.TryPatch(heroMethodToPatch, prefix: prefixMethod);
+            harmony.TryPatch(settlementMethodToPatch, prefix: settlementPrefixMethod);
+            harmony.TryPatch(heroMethodToPatch, prefix: heroPrefixMethod);
         }
 
-        private static bool DoesPlayerKnowDetailsOfPrefix(ref bool __result)
+        private static bool DoesPlayerKnowDetailsOfSettlementPrefix(ref bool __result)
         {
-            __result = true;
-            return false;
+            if (Settings.Instance.EnableForFiefs)
+            {
+                __result = true;
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool DoesPlayerKnowDetailsOfHeroPrefix(ref bool __result)
+        {
+            if (Settings.Instance.EnableForHeroes)
+            {
+                __result = true;
+                return false;
+            }
+
+            return true;
         }
     }
 }
