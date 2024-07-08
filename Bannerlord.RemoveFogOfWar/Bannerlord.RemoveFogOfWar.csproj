@@ -33,7 +33,7 @@
     </PackageReference>
     <PackageReference Include="Bannerlord.ModuleLoader.Injector" Version="$(BUTRModuleLoaderVersion)" />
     <PackageReference Include="Bannerlord.ModuleManager.Source" Version="$(BUTRModuleManagerVersion)" />
-    <PackageReference Include="Bannerlord.MCM" Version="$(MCMVersion)" IncludeAssets="compile" />
+    <PackageReference Include="Bannerlord.MCM" Version="5.10.2" IncludeAssets="compile" />
 
     <!-- ReferenceAssemblies -->
     <PackageReference Include="Bannerlord.ReferenceAssemblies.Core" Version="$(GameVersion).*-*" PrivateAssets="All" />
