@@ -4,9 +4,9 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.CampaignSystem.Settlements;
 
-namespace Bannerlord.RemoveFogOfWar
+namespace Bannerlord.RemoveFogOfWar.Patches
 {
-    static class DefaultInformationRestrictionModelPatch
+    public static class DefaultInformationRestrictionModelPatch
     {
         public static void Apply(Harmony harmony)
         {
@@ -36,7 +36,7 @@ namespace Bannerlord.RemoveFogOfWar
             return true;
         }
 
-        private static bool DoesPlayerKnowDetailsOfHeroPrefix(ref bool __result)
+        private static bool DoesPlayerKnowDetailsOfHeroPrefix(ref bool __result, Hero hero)
         {
             if (Settings.Instance.EnableForHeroes)
             {
