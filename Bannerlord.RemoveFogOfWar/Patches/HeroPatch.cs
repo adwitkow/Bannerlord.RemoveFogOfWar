@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using HarmonyLib.BUTR.Extensions;
-using System;
 using TaleWorlds.CampaignSystem;
 
 namespace Bannerlord.RemoveFogOfWar.Patches
@@ -9,7 +8,8 @@ namespace Bannerlord.RemoveFogOfWar.Patches
     {
         public static void Apply(Harmony harmony)
         {
-            var methodToPatch = typeof(Hero).GetProperty("IsKnownToPlayer").GetGetMethod();
+            var methodToPatch = AccessTools2.PropertyGetter(typeof(Hero),
+                nameof(Hero.IsKnownToPlayer));
             var prefixMethod = AccessTools2.Method(typeof(HeroPatch),
                 nameof(IsKnownToPlayer));
 
