@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using Bannerlord.RemoveFogOfWar.Patches;
+using HarmonyLib;
 using TaleWorlds.MountAndBlade;
 
 namespace Bannerlord.RemoveFogOfWar
@@ -10,6 +11,8 @@ namespace Bannerlord.RemoveFogOfWar
         protected override void OnSubModuleLoad()
         {
             DefaultInformationRestrictionModelPatch.Apply(_harmony);
+            HeroPatch.Apply(_harmony);
+
             base.OnSubModuleLoad();
         }
     }
