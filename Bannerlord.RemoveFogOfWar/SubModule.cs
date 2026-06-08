@@ -1,6 +1,7 @@
 ﻿using Bannerlord.RemoveFogOfWar.Models;
 using Bannerlord.RemoveFogOfWar.Patches;
 using HarmonyLib;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.ComponentInterfaces;
 using TaleWorlds.Core;
@@ -29,7 +30,14 @@ namespace Bannerlord.RemoveFogOfWar
                 return;
             }
 
+#if LOWER_THAN_1_3
+            var baseModel = gameStarterObject.Models
+                .OfType<InformationRestrictionModel>()
+                .LastOrDefault();
+            gameStarterObject.AddModel(new NoFogOfWarInformationRestrictionModel(baseModel));
+#else
             gameStarterObject.AddModel<InformationRestrictionModel>(new NoFogOfWarInformationRestrictionModel());
+#endif
         }
     }
 }

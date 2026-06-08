@@ -6,6 +6,15 @@ namespace Bannerlord.RemoveFogOfWar.Models;
 
 internal class NoFogOfWarInformationRestrictionModel : InformationRestrictionModel
 {
+#if LOWER_THAN_1_3
+    public NoFogOfWarInformationRestrictionModel(InformationRestrictionModel baseModel)
+    {
+        BaseModel = baseModel;
+    }
+
+    private InformationRestrictionModel BaseModel { get; }
+#endif
+
     public override bool DoesPlayerKnowDetailsOf(Settlement settlement)
     {
         if (Settings.Instance.EnableForFiefs)

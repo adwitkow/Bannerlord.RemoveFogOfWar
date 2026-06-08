@@ -43,7 +43,11 @@ public static class HeroHelperPatch
     private static Settlement? GetClosestSettlement(Hero hero)
     {
         return Settlement.All
+#if LOWER_THAN_1_3
+            .OrderBy(settlement => settlement.GetPosition().DistanceSquared(hero.GetPosition()))
+#else
             .OrderBy(settlement => settlement.Position.DistanceSquared(hero.GetCampaignPosition()))
+#endif
             .FirstOrDefault();
     }
 }
