@@ -23,6 +23,11 @@ public static class HeroHelperPatch
 
     private static bool GetLastSeenTextPrefix(ref TextObject __result, Hero hero)
     {
+        if (hero.IsFugitive || hero.IsDead)
+        {
+            return true;
+        }
+
         if (Settings.Instance.EnableForHeroes)
         {
             var settlement = GetClosestSettlement(hero);
@@ -43,6 +48,7 @@ public static class HeroHelperPatch
     private static Settlement? GetClosestSettlement(Hero hero)
     {
         return Settlement.All
+            .Where(settlement => !settlement.IsHideout)
 #if LOWER_THAN_1_3
             .OrderBy(settlement => settlement.GetPosition().DistanceSquared(hero.GetPosition()))
 #else
