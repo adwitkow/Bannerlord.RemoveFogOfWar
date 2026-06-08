@@ -15,6 +15,7 @@ namespace Bannerlord.RemoveFogOfWar
         protected override void OnSubModuleLoad()
         {
             HeroPatch.Apply(_harmony);
+            HeroHelperPatch.Apply(_harmony);
 
             base.OnSubModuleLoad();
         }

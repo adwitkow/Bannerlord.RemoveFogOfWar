@@ -13,7 +13,7 @@ namespace Bannerlord.RemoveFogOfWar.Patches
             var prefixMethod = AccessTools2.Method(typeof(HeroPatch),
                 nameof(IsKnownToPlayer));
 
-            harmony.TryPatch(methodToPatch, prefix: prefixMethod);
+            harmony.Patch(methodToPatch, prefix: prefixMethod);
         }
 
         private static bool IsKnownToPlayer(ref bool __result)
