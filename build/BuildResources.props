@@ -1,0 +1,8 @@
+<Project>
+    
+  <PropertyGroup>
+    <ModuleId>Bannerlord.RemoveFogOfWar</ModuleId>
+    <ModuleName>Remove Fog of War</ModuleName>
+  </PropertyGroup>
+
+</Project>
