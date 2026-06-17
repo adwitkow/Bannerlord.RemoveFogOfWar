@@ -48,7 +48,7 @@ public static class HeroHelperPatch
     private static Settlement? GetClosestSettlement(Hero hero)
     {
         return Settlement.All
-            .Where(settlement => !settlement.IsHideout)
+            .Where(settlement => settlement.IsFortification || settlement.IsVillage)
 #if LOWER_THAN_1_3
             .OrderBy(settlement => settlement.GetPosition().DistanceSquared(hero.GetPosition()))
 #else
