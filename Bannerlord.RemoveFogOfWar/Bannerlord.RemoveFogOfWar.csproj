@@ -14,7 +14,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Bannerlord.MCM" Version="5.11.4" IncludeAssets="compile" />
+    <PackageReference Include="Bannerlord.MCM" Version="5.12.0" IncludeAssets="compile" />
   </ItemGroup>
 
 </Project>
